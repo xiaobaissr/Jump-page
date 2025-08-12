@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <title>跳转到我的网站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            animation: float 15s linear infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+        }
+        
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            max-width: 90%;
+            width: 450px;
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg, 
+                transparent, 
+                rgba(255,255,255,0.05), 
+                transparent
+            );
+            animation: rotate 10s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(45deg, #ff6b6b, #ffa502);
+            border-radius: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+            animation: pulse 2.5s ease-in-out infinite;
+            transform: rotate(45deg);
+        }
+        
+        .logo span {
+            transform: rotate(-45deg);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: rotate(45deg) scale(1); box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4); }
+            50% { transform: rotate(45deg) scale(1.08); box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6); }
+        }
+        
+        h1 {
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .countdown {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: #ffd32a;
+            margin: 1.8rem 0;
+            text-shadow: 0 0 25px rgba(255, 211, 42, 0.7);
+            position: relative;
+            font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+        }
+        
+        .countdown::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #ffd32a, transparent);
+            border-radius: 2px;
+        }
+        
+        .message {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+        
+        .target-url {
+            display: block;
+            margin-top: 8px;
+            font-size: 1.1rem;
+            color: #70a1ff;
+            word-break: break-all;
+            padding: 0 10px;
+            font-weight: 500;
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 2.2rem;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ffa502);
+            border-radius: 3px;
+            width: 100%;
+            animation: progress 5s linear forwards;
+            box-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+        }
+        
+        @keyframes progress {
+            from { width: 100%; }
+            to { width: 0%; }
+        }
+        
+        .loading-dots {
+            display: inline-flex;
+            gap: 5px;
+            margin-left: 8px;
+        }
+        
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #70a1ff;
+            border-radius: 50%;
+            animation: bounce 1.4s ease-in-out infinite both;
+        }
+        
+        .dot:nth-child(1) { animation-delay: -0.32s; }
+        .dot:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+        
+        .footer {
+            margin-top: 2rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 2rem 1.5rem;
+                width: 95%;
+                margin: 1rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .countdown {
+                font-size: 3.5rem;
+            }
+            
+            .message {
+                font-size: 1.05rem;
+            }
+            
+            .logo {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 320px) {
+            .container {
+                padding: 1.8rem 1.2rem;
+            }
+            
+            .countdown {
+                font-size: 3rem;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation" id="particles"></div>
+    
+    <div class="container">
+        <div class="logo"><span>M</span></div>
+        <h1>即将跳转到我的网站</h1>
+        <div class="countdown" id="countdown">5</div>
+        <div class="message">
+            正在为您准备跳转页面<span class="loading-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+            <span class="target-url" id="targetUrl">https://my-website.com</span>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        <div class="footer">
+            安全跳转 · 请勿关闭此页面
+        </div>
+    </div>
+
+    <script>
+        // 配置信息 - 在这里修改为您的设置
+        const config = {
+            targetUrl: "https://dujiao.uuuix.com", // 修改为目标网址
+            countdownDuration: 5, // 倒计时时长(秒)
+            logoText: "WF", // 徽标文字
+            logoColor: "linear-gradient(45deg, #ff6b6b, #ffa502)", // 徽标颜色
+            pageTitle: "跳转到我的网站" // 页面标题
+        };
+        
+        // 初始化页面
+        document.title = config.pageTitle;
+        document.querySelector('.logo span').textContent = config.logoText;
+        document.querySelector('.logo').style.background = config.logoColor;
+        document.getElementById('targetUrl').textContent = config.targetUrl;
+        
+        // 创建背景粒子动画
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 25;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // 随机粒子大小
+                const size = Math.random() * 10 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // 随机位置
+                const startX = Math.random() * 100;
+                particle.style.left = `${startX}%`;
+                
+                // 随机动画延迟和时长
+                const delay = Math.random() * 15;
+                const duration = 10 + Math.random() * 20;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // 倒计时和跳转功能
+        function startCountdown() {
+            let count = config.countdownDuration;
+            const countdownElement = document.getElementById('countdown');
+            countdownElement.textContent = count;
+            
+            const countdownInterval = setInterval(() => {
+                count--;
+                countdownElement.textContent = count;
+                
+                if (count <= 0) {
+                    clearInterval(countdownInterval);
+                    redirectToTarget();
+                }
+            }, 1000);
+            
+            // 5秒后强制跳转（即使倒计时出现问题）
+            setTimeout(redirectToTarget, config.countdownDuration * 1000);
+        }
+        
+        // 跳转到目标页面
+        function redirectToTarget() {
+            window.location.href = config.targetUrl;
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            startCountdown();
+        });
+    </script>
+</body>
+</html>

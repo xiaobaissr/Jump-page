@@ -6,343 +6,187 @@
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
     <title>跳转到我的网站</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        html,body{height:100%;margin:0;padding:0;}
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            overflow: hidden; position: relative;
         }
-        
-        .background-animation {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.3;
-        }
-        
+        .background-animation {position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;opacity:.3;}
         .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.6);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            position: absolute; border-radius: 50%; background: rgba(255,255,255,.6);
+            box-shadow: 0 0 10px rgba(255,255,255,.8);
             animation: float 15s linear infinite;
         }
-        
         @keyframes float {
-            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+            0%{transform:translateY(100vh);opacity:0;}
+            10%{opacity:1;}
+            90%{opacity:.8;}
+            100%{transform:translateY(-100px) translateX(50px);opacity:0;}
         }
-        
         .container {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            max-width: 90%;
-            width: 450px;
-            position: relative;
-            overflow: hidden;
-            z-index: 10;
+            text-align:center; background:rgba(255,255,255,.08); backdrop-filter:blur(20px);
+            border-radius:20px; padding:2.5rem 1.5rem; box-shadow:0 25px 50px rgba(0,0,0,.2);
+            border:1px solid rgba(255,255,255,.15); max-width:95%; width:400px; position:relative; z-index:10;
         }
-        
-        .container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(
-                from 0deg, 
-                transparent, 
-                rgba(255,255,255,0.05), 
-                transparent
-            );
-            animation: rotate 10s linear infinite;
-            z-index: -1;
-        }
-        
-        @keyframes rotate {
-            100% { transform: rotate(360deg); }
-        }
-        
         .logo {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 1.5rem;
-            background: linear-gradient(45deg, #ff6b6b, #ffa502);
-            border-radius: 20%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: white;
-            font-weight: bold;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
-            animation: pulse 2.5s ease-in-out infinite;
-            transform: rotate(45deg);
+            width:80px;height:80px;margin:0 auto 1.2rem;background:linear-gradient(45deg,#ff6b6b,#ffa502);
+            border-radius:20%;display:flex;align-items:center;justify-content:center;
+            font-size:2rem;color:#fff;font-weight:bold;box-shadow:0 10px 30px rgba(255,107,107,.4);
+            animation:pulse 2.5s ease-in-out infinite;transform:rotate(45deg);
         }
-        
-        .logo span {
-            transform: rotate(-45deg);
-        }
-        
+        .logo span{transform:rotate(-45deg);}
         @keyframes pulse {
-            0%, 100% { transform: rotate(45deg) scale(1); box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4); }
-            50% { transform: rotate(45deg) scale(1.08); box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6); }
+            0%,100%{transform:rotate(45deg) scale(1);}
+            50%{transform:rotate(45deg) scale(1.08);}
         }
-        
-        h1 {
-            color: white;
-            font-size: 2.2rem;
-            margin-bottom: 1.2rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-        
+        h1{color:#fff;font-size:1.8rem;margin-bottom:1rem;font-weight:500;text-shadow:0 2px 10px rgba(0,0,0,.2);}
         .countdown {
-            font-size: 4.5rem;
-            font-weight: 700;
-            color: #ffd32a;
-            margin: 1.8rem 0;
-            text-shadow: 0 0 25px rgba(255, 211, 42, 0.7);
-            position: relative;
-            font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+            font-size:3.5rem;font-weight:700;color:#ffd32a;margin:1.2rem 0;text-shadow:0 0 25px rgba(255,211,42,.7);
+            position:relative;font-family:'Arial Rounded MT Bold','Helvetica Rounded',Arial,sans-serif;
         }
-        
         .countdown::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, #ffd32a, transparent);
-            border-radius: 2px;
+            content:'';position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);
+            width:80px;height:3px;background:linear-gradient(90deg,transparent,#ffd32a,transparent);border-radius:2px;
         }
-        
-        .message {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 1.2rem;
-            line-height: 1.7;
-            margin-bottom: 2.5rem;
+        .message{color:rgba(255,255,255,.85);font-size:1.05rem;line-height:1.7;margin-bottom:2rem;}
+        .target-url{display:block;margin-top:8px;font-size:1rem;color:#70a1ff;word-break:break-all;}
+        .progress-container{width:100%;height:6px;background:rgba(255,255,255,.15);border-radius:3px;overflow:hidden;margin-top:1.5rem;}
+        .progress-bar{
+            height:100%;background:linear-gradient(90deg,#ff6b6b,#ffa502);border-radius:3px;width:100%;
+            animation:progress 5s linear forwards;
         }
-        
-        .target-url {
-            display: block;
-            margin-top: 8px;
-            font-size: 1.1rem;
-            color: #70a1ff;
-            word-break: break-all;
-            padding: 0 10px;
-            font-weight: 500;
-        }
-        
-        .progress-container {
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 3px;
-            overflow: hidden;
-            margin-top: 2.2rem;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #ff6b6b, #ffa502);
-            border-radius: 3px;
-            width: 100%;
-            animation: progress 5s linear forwards;
-            box-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
-        }
-        
-        @keyframes progress {
-            from { width: 100%; }
-            to { width: 0%; }
-        }
-        
-        .loading-dots {
-            display: inline-flex;
-            gap: 5px;
-            margin-left: 8px;
-        }
-        
-        .dot {
-            width: 8px;
-            height: 8px;
-            background: #70a1ff;
-            border-radius: 50%;
-            animation: bounce 1.4s ease-in-out infinite both;
-        }
-        
-        .dot:nth-child(1) { animation-delay: -0.32s; }
-        .dot:nth-child(2) { animation-delay: -0.16s; }
-        
-        @keyframes bounce {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1); }
-        }
-        
-        .footer {
-            margin-top: 2rem;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                padding: 2rem 1.5rem;
-                width: 95%;
-                margin: 1rem;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .countdown {
-                font-size: 3.5rem;
-            }
-            
-            .message {
-                font-size: 1.05rem;
-            }
-            
-            .logo {
-                width: 80px;
-                height: 80px;
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 320px) {
-            .container {
-                padding: 1.8rem 1.2rem;
-            }
-            
-            .countdown {
-                font-size: 3rem;
-            }
-            
-            h1 {
-                font-size: 1.6rem;
-            }
+        @keyframes progress{from{width:100%;}to{width:0%;}}
+        .loading-dots{display:inline-flex;gap:5px;margin-left:8px;}
+        .dot{width:8px;height:8px;background:#70a1ff;border-radius:50%;animation:bounce 1.4s ease-in-out infinite both;}
+        .dot:nth-child(1){animation-delay:-.32s;}
+        .dot:nth-child(2){animation-delay:-.16s;}
+        @keyframes bounce{0%,80%,100%{transform:scale(0);}40%{transform:scale(1);}}
+        .footer{margin-top:1.5rem;color:rgba(255,255,255,.6);font-size:.9rem;}
+        @media (max-width:480px){
+            .container{padding:1.5rem 1rem;width:98%;}
+            h1{font-size:1.2rem;}
+            .countdown{font-size:2.2rem;}
+            .logo{width:60px;height:60px;font-size:1.3rem;}
         }
     </style>
 </head>
 <body>
     <div class="background-animation" id="particles"></div>
-    
     <div class="container">
         <div class="logo"><span>M</span></div>
         <h1>即将跳转到我的网站</h1>
         <div class="countdown" id="countdown">5</div>
         <div class="message">
-            正在为您准备跳转页面<span class="loading-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+            正在为您准备跳转页面
+            <span class="loading-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
             <span class="target-url" id="targetUrl">https://my-website.com</span>
         </div>
         <div class="progress-container">
             <div class="progress-bar"></div>
         </div>
-        <div class="footer">
-            安全跳转 · 请勿关闭此页面
-        </div>
+        <div class="footer">安全跳转 · 请勿关闭此页面</div>
     </div>
+<script>
+const config = {
+    // 域名经过简单base64加密
+    domains: [
+        "aHR0cHM6Ly9kdWppYW8udXV1aXguY29tCg==",
+        "aHR0cHM6Ly9iYWlkdS5jb20=",
+        "aHR0cHM6Ly8xLjEuMS4x"
+    ],
+    countdownDuration: 5,
+    logoText: "WF",
+    logoColor: "linear-gradient(45deg, #ff6b6b, #ffa502)",
+    pageTitle: "跳转到我的网站"
+};
 
-    <script>
-        // 配置信息 - 在这里修改为您的设置
-        const config = {
-            targetUrl: "https://dujiao.uuuix.com", // 修改为目标网址
-            countdownDuration: 5, // 倒计时时长(秒)
-            logoText: "WF", // 徽标文字
-            logoColor: "linear-gradient(45deg, #ff6b6b, #ffa502)", // 徽标颜色
-            pageTitle: "跳转到我的网站" // 页面标题
-        };
-        
-        // 初始化页面
-        document.title = config.pageTitle;
-        document.querySelector('.logo span').textContent = config.logoText;
-        document.querySelector('.logo').style.background = config.logoColor;
-        document.getElementById('targetUrl').textContent = config.targetUrl;
-        
-        // 创建背景粒子动画
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 25;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // 随机粒子大小
-                const size = Math.random() * 10 + 5;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                // 随机位置
-                const startX = Math.random() * 100;
-                particle.style.left = `${startX}%`;
-                
-                // 随机动画延迟和时长
-                const delay = Math.random() * 15;
-                const duration = 10 + Math.random() * 20;
-                particle.style.animationDelay = `${delay}s`;
-                particle.style.animationDuration = `${duration}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-        
-        // 倒计时和跳转功能
-        function startCountdown() {
-            let count = config.countdownDuration;
-            const countdownElement = document.getElementById('countdown');
-            countdownElement.textContent = count;
-            
-            const countdownInterval = setInterval(() => {
-                count--;
-                countdownElement.textContent = count;
-                
-                if (count <= 0) {
-                    clearInterval(countdownInterval);
-                    redirectToTarget();
+// 解密base64域名
+function decodeDomains(domains) {
+    return domains.map(d => atob(d));
+}
+config.domains = decodeDomains(config.domains);
+
+document.title = config.pageTitle;
+document.querySelector('.logo span').textContent = config.logoText;
+document.querySelector('.logo').style.background = config.logoColor;
+
+function testDomainSpeed(domains, timeout = 2000) {
+    return Promise.all(domains.map(domain => {
+        return new Promise(resolve => {
+            const img = new Image();
+            const start = performance.now();
+            let finished = false;
+            img.onload = () => {
+                if (!finished) {
+                    finished = true;
+                    resolve({domain, time: performance.now() - start});
                 }
-            }, 1000);
-            
-            // 5秒后强制跳转（即使倒计时出现问题）
-            setTimeout(redirectToTarget, config.countdownDuration * 1000);
-        }
-        
-        // 跳转到目标页面
-        function redirectToTarget() {
-            window.location.href = config.targetUrl;
-        }
-        
-        // 初始化
-        document.addEventListener('DOMContentLoaded', () => {
-            createParticles();
-            startCountdown();
+            };
+            img.onerror = () => {
+                if (!finished) {
+                    finished = true;
+                    resolve({domain, time: Infinity});
+                }
+            };
+            img.src = domain + "/favicon.ico?_t=" + Math.random();
+            setTimeout(() => {
+                if (!finished) {
+                    finished = true;
+                    resolve({domain, time: Infinity});
+                }
+            }, timeout);
         });
-    </script>
+    }));
+}
+
+function selectFastestDomain(results) {
+    results.sort((a, b) => a.time - b.time);
+    return results[0].domain;
+}
+
+function updateTargetUrl(url) {
+    document.getElementById('targetUrl').textContent = url;
+}
+
+function startCountdown(targetUrl) {
+    let c = config.countdownDuration, el = document.getElementById('countdown');
+    el.textContent = c;
+    const timer = setInterval(() => {
+        el.textContent = --c;
+        if (c <= 0) { clearInterval(timer); redirectToTarget(targetUrl); }
+    }, 1000);
+    setTimeout(() => redirectToTarget(targetUrl), config.countdownDuration * 1000);
+}
+
+function redirectToTarget(url) {
+    window.location.href = url;
+}
+
+function createParticles() {
+    const p = document.getElementById('particles');
+    for (let i = 0; i < 20; i++) {
+        const d = document.createElement('div');
+        d.className = 'particle';
+        const s = Math.random() * 10 + 5;
+        d.style.width = d.style.height = s + 'px';
+        d.style.left = (Math.random() * 100) + '%';
+        d.style.animationDelay = (Math.random() * 15) + 's';
+        d.style.animationDuration = (10 + Math.random() * 20) + 's';
+        p.appendChild(d);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    createParticles();
+    updateTargetUrl("测速中...");
+    const results = await testDomainSpeed(config.domains);
+    const fastest = selectFastestDomain(results);
+    updateTargetUrl(fastest);
+    startCountdown(fastest);
+});
+</script>
+
 </body>
 </html>

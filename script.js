@@ -32,10 +32,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 测试域名速度并选择最快的
     const results = await testDomainSpeed(domains);
     const fastest = selectFastestDomain(results);
-    updateTargetUrl(fastest);
+    
+    // 获取hash路径
+    const hashPath = window.location.hash.substring(1);
+    let targetUrl = fastest;
+    
+    // 如果有hash路径，添加到目标URL
+    if (hashPath) {
+        // 确保目标URL以斜杠结尾
+        if (!targetUrl.endsWith('/')) {
+            targetUrl += '/';
+        }
+        // 移除hash路径开头的斜杠（如果有）
+        const cleanHash = hashPath.startsWith('/') ? hashPath.substring(1) : hashPath;
+        targetUrl += cleanHash;
+    }
+    
+    updateTargetUrl(targetUrl);
     
     // 开始倒计时
-    startCountdown(fastest, config.countdownDuration);
+    startCountdown(targetUrl, config.countdownDuration);
 });
 
 // 从config.json加载配置
@@ -149,6 +165,7 @@ function createParticles() {
 function setupCopyUrlButton() {
     const btn = document.getElementById('copyUrlBtn');
     btn.addEventListener('click', () => {
+        // 复制当前页面URL（包含hash）
         const url = window.location.href;
         navigator.clipboard.writeText(url).then(() => {
             const originalText = btn.textContent;
@@ -162,3 +179,25 @@ function setupCopyUrlButton() {
         });
     });
 }
+
+// 添加一个辅助函数来解析hash路径
+function parseHashPath() {
+    const hash = window.location.hash.substring(1);
+    if (!hash) return null;
+    
+    // 尝试解析hash为对象（如果是JSON格式）
+    try {
+        return JSON.parse(decodeURIComponent(hash));
+    } catch (e) {
+        // 如果不是JSON，返回原始字符串
+        return hash;
+    }
+}
+
+// 示例用法（可选）
+// const pathInfo = parseHashPath();
+// if (typeof pathInfo === 'string') {
+//   console.log("Hash路径:", pathInfo);
+// } else if (pathInfo) {
+//   console.log("解析的Hash对象:", pathInfo);
+// }

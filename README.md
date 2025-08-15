@@ -20,6 +20,8 @@
 
 ## 极速上手
 
+详细教程 https://blog.wufeng.me/archives/tiao-zhuan-ye-mian-xiang-mu
+
 1. 把 `index.html` 拖到你喜欢的地方
 2. 用文本编辑器打开，找到这段配置：
 

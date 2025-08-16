@@ -11,7 +11,7 @@ _无需后端 · 开箱即用 · 炫酷特效_
 
 [![演示预览](img/演示.jpg)](img/演示.jpg)
 
-[📖 详细教程](https://blog.wufeng.me/archives/tiao-zhuan-ye-mian-xiang-mu) | [💬 交流群](https://t.me/htpnu) | [⭐ Star](https://github.com/your-repo/jump-page)
+[📖 详细教程](https://blog.wufeng.me/archives/tiao-zhuan-ye-mian-xiang-mu) | [💬 交流群](https://t.me/htpnu) | [⭐ Star](https://github.com/aklibk86-dev/jump-page)
 
 </div>
 

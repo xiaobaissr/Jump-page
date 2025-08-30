@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const config = await fetchConfig();
         console.log('配置加载完成:', config);
         
+        // 应用主题样式
+        applyTheme(config.theme);
+        
         // 设置页面元素
         document.title = config.pageTitle;
         document.querySelector('.logo span').textContent = config.logoText;
@@ -76,6 +79,38 @@ document.addEventListener('DOMContentLoaded', async () => {
         updateTargetUrl("页面加载出错，请检查控制台了解详情");
     }
 });
+
+/**
+ * 应用主题样式
+ * @param {string} theme - 主题名称
+ */
+function applyTheme(theme) {
+    console.log('应用主题:', theme);
+    
+    // 获取样式表元素
+    const baseCss = document.getElementById('base-css');
+    const particlesCss = document.getElementById('particles-css');
+    const overlayCss = document.getElementById('overlay-css');
+    const responsiveCss = document.getElementById('responsive-css');
+    const businessCss = document.getElementById('business-css');
+    
+    // 根据主题切换样式
+    if (theme === 'business') {
+        // 启用商务风样式
+        if (baseCss) baseCss.disabled = true;
+        if (particlesCss) particlesCss.disabled = true;
+        if (overlayCss) overlayCss.disabled = true;
+        if (responsiveCss) responsiveCss.disabled = true;
+        if (businessCss) businessCss.disabled = false;
+    } else {
+        // 使用默认样式
+        if (baseCss) baseCss.disabled = false;
+        if (particlesCss) particlesCss.disabled = false;
+        if (overlayCss) overlayCss.disabled = false;
+        if (responsiveCss) responsiveCss.disabled = false;
+        if (businessCss) businessCss.disabled = true;
+    }
+}
 
 /**
  * 更新目标URL显示

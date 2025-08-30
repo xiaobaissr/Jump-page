@@ -30,7 +30,8 @@ async function fetchConfig() {
             countdownDuration: 5,
             logoText: "WF",
             logoColor: "linear-gradient(45deg, #ff6b6b, #ffa502)",
-            pageTitle: "跳转到我的网站"
+            pageTitle: "跳转到我的网站",
+            theme: "default"
         };
     }
 }

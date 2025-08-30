@@ -1,0 +1,171 @@
+/* src/css/base.css */
+/* 基础样式 */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2.5rem 1.5rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, .2);
+    border: 1px solid rgba(255, 255, 255, .15);
+    max-width: 95%;
+    width: 400px;
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.2rem;
+    background: linear-gradient(45deg, #ff6b6b, #ffa502);
+    border-radius: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 10px 30px rgba(255, 107, 107, .4);
+    animation: pulse 2.5s ease-in-out infinite;
+    transform: rotate(45deg);
+}
+
+.logo span {
+    transform: rotate(-45deg);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: rotate(45deg) scale(1);
+    }
+    50% {
+        transform: rotate(45deg) scale(1.08);
+    }
+}
+
+h1 {
+    color: #fff;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+}
+
+.countdown {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ffd32a;
+    margin: 1.2rem 0;
+    text-shadow: 0 0 25px rgba(255, 211, 42, .7);
+    position: relative;
+    font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+}
+
+.countdown::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ffd32a, transparent);
+    border-radius: 2px;
+}
+
+.message {
+    color: rgba(255, 255, 255, .85);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.target-url {
+    display: block;
+    margin-top: 8px;
+    font-size: 1rem;
+    color: #70a1ff;
+    word-break: break-all;
+}
+
+.progress-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, .15);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 1.5rem;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #ff6b6b, #ffa502);
+    border-radius: 3px;
+    width: 100%;
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
+}
+
+.loading-dots {
+    display: inline-flex;
+    gap: 5px;
+    margin-left: 8px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: #70a1ff;
+    border-radius: 50%;
+    animation: bounce 1.4s ease-in-out infinite both;
+}
+
+.dot:nth-child(1) {
+    animation-delay: -.32s;
+}
+
+.dot:nth-child(2) {
+    animation-delay: -.16s;
+}
+
+@keyframes bounce {
+    0%, 80%, 100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+
+.footer {
+    margin-top: 1.5rem;
+    color: rgba(255, 255, 255, .6);
+    font-size: .9rem;
+}

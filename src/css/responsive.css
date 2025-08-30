@@ -1,0 +1,45 @@
+/* src/css/responsive.css */
+/* 响应式设计 */
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem 1rem;
+        width: 98%;
+    }
+    
+    h1 {
+        font-size: 1.2rem;
+    }
+    
+    .countdown {
+        font-size: 2.2rem;
+    }
+    
+    .logo {
+        width: 60px;
+        height: 60px;
+        font-size: 1.3rem;
+    }
+    
+    .guide-box {
+        padding: 1.5rem;
+    }
+    
+    .guide-title {
+        font-size: 1.4rem;
+    }
+    
+    .guide-text {
+        font-size: 1rem;
+    }
+    
+    .browser-icons {
+        gap: 15px;
+    }
+    
+    .browser-icon i {
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+    }
+}

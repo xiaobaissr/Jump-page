@@ -18,12 +18,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log('配置加载完成:', config);
         
         // 应用主题样式
-        applyTheme(config.theme);
+        if (config.theme) {
+            applyTheme(config.theme);
+        }
         
         // 设置页面元素
         document.title = config.pageTitle;
         document.querySelector('.logo span').textContent = config.logoText;
         document.querySelector('.logo').style.background = config.logoColor;
+        
+        // 应用页脚代码
+        applyFooterCode(config.footerCode);
         
         // 创建粒子效果
         createParticles();
@@ -122,5 +127,26 @@ function updateTargetUrl(url) {
         targetUrlElement.textContent = url;
     } else {
         console.error('未找到targetUrl元素');
+    }
+}
+
+/**
+ * 应用页脚代码
+ * @param {string} footerCode - 要插入的页脚代码
+ */
+function applyFooterCode(footerCode) {
+    // 如果页脚代码为空，则不执行任何操作
+    if (!footerCode || footerCode.trim() === '') {
+        return;
+    }
+    
+    // 获取自定义页脚元素
+    const customFooterElement = document.getElementById('customFooter');
+    
+    // 如果找到了自定义页脚元素，则插入代码
+    if (customFooterElement) {
+        customFooterElement.innerHTML = footerCode;
+    } else {
+        console.error('未找到customFooter元素');
     }
 }

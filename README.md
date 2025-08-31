@@ -92,6 +92,7 @@ _无需后端 ·静态页面· 开箱即用 · 炫酷特效_
 | `logoColor`         | String | Logo 渐变颜色               | `"linear-gradient(45deg, #667eea 0%, #764ba2 100%)"` |
 | `pageTitle`         | String | 浏览器标签页标题            | `"正在跳转..."`                                      |
 | `theme`             | String | 主题样式（default/business）| `"default"`                                          |
+| `footerCode`        | String | 自定义页脚代码              | `"<p>自定义页脚内容</p>"`                            |
 
 ### 🔗 Hash 路径跳转
 
@@ -176,6 +177,52 @@ const particleSpeed = 2;
 - 🔄 **备用域名**：建议配置多个备用域名，提高跳转成功率
 - 🎨 **主题切换**：通过修改`theme`配置项轻松切换不同主题样式
 - 🎨 **样式定制**：可根据喜好调整颜色和样式
+- 📝 **页脚定制**：通过`footerCode`配置项添加自定义页脚内容
+
+---
+
+## 📝 页脚代码定制
+
+通过`footerCode`配置项，您可以轻松地在页面底部添加自定义内容，例如版权信息、统计代码、联系信息等。
+
+### 使用方法
+
+在`config.json`配置文件中添加`footerCode`字段，填入您想要显示的HTML代码：
+
+```json
+{
+  "footerCode": "<p style='text-align: center; margin-top: 20px;'>© 2023 My Website. All rights reserved.</p>"
+}
+```
+
+### 示例
+
+1. **添加版权信息**：
+   ```json
+   {
+     "footerCode": "<p style='text-align: center; margin-top: 20px;'>© 2023 My Website. All rights reserved.</p>"
+   }
+   ```
+
+2. **添加统计代码**：
+   ```json
+   {
+     "footerCode": "<script>console.log('统计代码加载成功');</script>"
+   }
+   ```
+
+3. **添加联系信息**：
+   ```json
+   {
+     "footerCode": "<div style='text-align: center; margin-top: 20px;'><p>联系我们：contact@example.com</p></div>"
+   }
+   ```
+
+### 注意事项
+
+- 页脚代码会插入到页面底部，位于默认页脚信息之后
+- 如果`footerCode`为空或未设置，则不会显示任何额外内容
+- 您可以使用HTML、CSS和JavaScript代码来实现丰富的效果
 
 ---
 

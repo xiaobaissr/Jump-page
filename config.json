@@ -1,12 +1,13 @@
 {
     "domains": [
-        "aHR0cHM6Ly9kdWppYW8udXV1aXguY29tCg==", 
-        "aHR0cHM6Ly9iYWlkdS5jb20=", 
-        "aHR0cHM6Ly8xLjEuMS4x" 
+        "aHR0cHM6Ly9kdWppYW8udXV1aXguY29tCg==",
+        "aHR0cHM6Ly9iYWlkdS5jb20=",
+        "aHR0cHM6Ly8xLjEuMS4x"
     ],
     "countdownDuration": 5,
-    "logoText": "WF", 
+    "logoText": "WF",
     "logoColor": "linear-gradient(135deg, #3498db 0%, #2c3e50 100%)",
     "pageTitle": "跳转到我的网站",
-    "theme": "business"
+    "theme": "business",
+    "footerCode": "<p style='text-align: center; margin-top: 20px; color: #666;'>© 2023 My Website. All rights reserved.</p>"
 }

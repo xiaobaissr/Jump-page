@@ -5,10 +5,8 @@
         "aHR0cHM6Ly94Ym9hcmQud3VmZW5nLm1l"
     ],
     "countdownDuration": 5,
-    "logoText": "WF",
-    "logoColor": "linear-gradient(135deg, #3498db 0%, #2c3e50 100%)",
     "pageTitle": "跳转到我的网站",
-    "theme": "sunset",
+    "theme": "violet",
     "footerCode": "<p style='text-align: center; margin-top: 20px; color: #666;'>© 2023 My Website. All rights reserved.</p>",
     "popup": {
         "title": "重要通知",

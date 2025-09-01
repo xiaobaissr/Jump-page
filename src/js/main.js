@@ -81,29 +81,21 @@ function applyTheme(theme) {
     if (responsiveCss) responsiveCss.disabled = false;
     if (themesCss) themesCss.disabled = false;
     
-    // 移除所有可能的主题类
-    document.body.classList.remove('deepsea-theme', 'sunset-theme', 'forest-theme', 'violet-theme', 'sakura-theme');
+    // 获取当前主题类
+    const currentThemeClass = document.body.className.split(' ').find(cls => cls.endsWith('-theme'));
+    const newThemeClass = `${theme}-theme`;
     
-    // 根据主题添加相应的类
-    switch (theme) {
-        case 'deepsea':
-            document.body.classList.add('deepsea-theme');
-            break;
-        case 'sunset':
-            document.body.classList.add('sunset-theme');
-            break;
-        case 'forest':
-            document.body.classList.add('forest-theme');
-            break;
-        case 'violet':
-            document.body.classList.add('violet-theme');
-            break;
-        case 'sakura':
-            document.body.classList.add('sakura-theme');
-            break;
-        default:
-            // 默认主题不添加额外的类
-            break;
+    // 只有当主题真正改变时才移除和添加类
+    if (currentThemeClass !== newThemeClass) {
+        // 移除当前主题类
+        if (currentThemeClass) {
+            document.body.classList.remove(currentThemeClass);
+        }
+        
+        // 添加新主题类
+        if (theme !== 'default') {
+            document.body.classList.add(newThemeClass);
+        }
     }
 }
 

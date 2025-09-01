@@ -8,8 +8,14 @@
     <link rel="stylesheet" href="src/css/particles.css">
     <link rel="stylesheet" href="src/css/themes.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* 预加载默认主题背景，避免页面加载时背景变白 */
+        body.deepsea-theme {
+            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%) !important;
+        }
+    </style>
 </head>
-<body>
+<body class="deepsea-theme">
     <!-- 背景粒子效果 -->
     <div class="background-animation" id="particles"></div>
     

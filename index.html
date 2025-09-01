@@ -12,8 +12,14 @@
     <link rel="stylesheet" href="src/css/responsive.css" id="responsive-css">
     <link rel="stylesheet" href="src/css/themes.css" id="themes-css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* 预加载默认主题背景，避免页面加载时背景变白 */
+        body.deepsea-theme {
+            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%) !important;
+        }
+    </style>
 </head>
-<body>
+<body class="deepsea-theme">
     <!-- 微信/QQ浏览器引导遮罩层 -->
     <div class="overlay" id="browserOverlay" role="dialog" aria-labelledby="guideTitle" aria-describedby="guideText">
         <div class="guide-box">

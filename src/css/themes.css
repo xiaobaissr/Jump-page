@@ -30,6 +30,11 @@ body.deepsea-theme {
     background: linear-gradient(145deg, #1a2980, #26d0ce);
 }
 
+.deepsea-theme .popup-btn {
+    background: linear-gradient(45deg, #1a2980, #26d0ce);
+    box-shadow: 0 5px 15px rgba(26, 41, 128, 0.4);
+}
+
 /* 日落橙主题 */
 body.sunset-theme {
     background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%) !important;
@@ -57,6 +62,11 @@ body.sunset-theme {
 
 .sunset-theme .guide-box {
     background: linear-gradient(145deg, #ff9a9e, #fecfef);
+}
+
+.sunset-theme .popup-btn {
+    background: linear-gradient(45deg, #ff9a9e, #ff6b6b);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
 }
 
 /* 森林绿主题 */
@@ -88,6 +98,11 @@ body.forest-theme {
     background: linear-gradient(145deg, #1d976c, #93f9b9);
 }
 
+.forest-theme .popup-btn {
+    background: linear-gradient(45deg, #1d976c, #93f9b9);
+    box-shadow: 0 5px 15px rgba(29, 151, 108, 0.4);
+}
+
 /* 紫罗兰主题 */
 body.violet-theme {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
@@ -117,6 +132,11 @@ body.violet-theme {
     background: linear-gradient(145deg, #667eea, #764ba2);
 }
 
+.violet-theme .popup-btn {
+    background: linear-gradient(45deg, #667eea, #b860f7);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
 /* 樱花粉主题 */
 body.sakura-theme {
     background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%) !important;
@@ -144,4 +164,9 @@ body.sakura-theme {
 
 .sakura-theme .guide-box {
     background: linear-gradient(145deg, #ff9a9e, #fad0c4);
+}
+
+.sakura-theme .popup-btn {
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+    box-shadow: 0 5px 15px rgba(255, 154, 158, 0.4);
 }

@@ -57,6 +57,10 @@ async function showPopup() {
     // 获取配置
     const config = await fetchConfig();
     
+    // 获取当前主题
+    const bodyClass = document.body.className;
+    const currentTheme = bodyClass.split(' ').find(cls => cls.endsWith('-theme')) || 'default-theme';
+    
     // 创建弹窗元素
     const popupContainer = document.createElement('div');
     popupContainer.className = 'popup-overlay';
@@ -70,7 +74,7 @@ async function showPopup() {
                     <p class="popup-message">${config.popup?.content || '这是一个弹窗通知内容。'}</p>
                 </div>
                 <div class="popup-footer">
-                    <button class="popup-btn" id="popupButton">${config.popup?.buttonText || '确定'}</button>
+                    <button class="popup-btn ${currentTheme}" id="popupButton">${config.popup?.buttonText || '确定'}</button>
                 </div>
             </div>
         </div>
@@ -142,7 +146,6 @@ async function showPopup() {
         }
         
         .popup-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ffa502);
             color: white;
             border: none;
             padding: 12px 30px;
@@ -150,12 +153,20 @@ async function showPopup() {
             border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
             transition: all 0.3s ease;
         }
         
         .popup-btn:hover {
             transform: translateY(-3px);
+        }
+        
+        /* 默认按钮样式 */
+        .popup-btn.default-theme {
+            background: linear-gradient(45deg, #ff6b6b, #ffa502);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        .popup-btn.default-theme:hover {
             box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
         }
         

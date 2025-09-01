@@ -55,10 +55,28 @@ function applyTheme(theme) {
     // 获取body元素
     const body = document.body;
     
-    // 根据主题切换样式
-    if (theme === 'business') {
-        body.classList.add('business-theme');
-    } else {
-        body.classList.remove('business-theme');
+    // 移除所有可能的主题类
+    body.classList.remove('business-theme', 'deepsea-theme', 'sunset-theme', 'forest-theme', 'violet-theme', 'sakura-theme');
+    
+    // 根据主题添加相应的类
+    switch (theme) {
+        case 'deepsea':
+            body.classList.add('deepsea-theme');
+            break;
+        case 'sunset':
+            body.classList.add('sunset-theme');
+            break;
+        case 'forest':
+            body.classList.add('forest-theme');
+            break;
+        case 'violet':
+            body.classList.add('violet-theme');
+            break;
+        case 'sakura':
+            body.classList.add('sakura-theme');
+            break;
+        default:
+            // 默认主题不添加额外的类
+            break;
     }
 }

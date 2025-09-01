@@ -10,37 +10,36 @@
     <link rel="stylesheet" href="src/css/particles.css" id="particles-css">
     <link rel="stylesheet" href="src/css/overlay.css" id="overlay-css">
     <link rel="stylesheet" href="src/css/responsive.css" id="responsive-css">
-    <!-- 商务风样式 -->
-    <link rel="stylesheet" href="src/css/business-style.css" id="business-css" disabled>
+    <link rel="stylesheet" href="src/css/themes.css" id="themes-css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- 遮罩层 -->
-    <div class="overlay" id="browserOverlay">
+    <!-- 微信/QQ浏览器引导遮罩层 -->
+    <div class="overlay" id="browserOverlay" role="dialog" aria-labelledby="guideTitle" aria-describedby="guideText">
         <div class="guide-box">
             <div class="guide-icon">
-                <i class="fas fa-exclamation-triangle"></i>
+                <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
             </div>
-            <h2 class="guide-title">请在浏览器中打开</h2>
-            <p class="guide-text">
+            <h2 class="guide-title" id="guideTitle">请在浏览器中打开</h2>
+            <p class="guide-text" id="guideText">
                 检测到您正在使用微信或QQ内置浏览器访问，为了获得最佳体验，请点击右上角菜单，选择"在浏览器中打开"。
             </p>
             
             <div class="browser-icons">
                 <div class="browser-icon">
-                    <i class="fab fa-chrome"></i>
+                    <i class="fab fa-chrome" aria-hidden="true"></i>
                     <span>Chrome</span>
                 </div>
                 <div class="browser-icon">
-                    <i class="fab fa-safari"></i>
+                    <i class="fab fa-safari" aria-hidden="true"></i>
                     <span>Safari</span>
                 </div>
                 <div class="browser-icon">
-                    <i class="fab fa-firefox"></i>
+                    <i class="fab fa-firefox" aria-hidden="true"></i>
                     <span>Firefox</span>
                 </div>
                 <div class="browser-icon">
-                    <i class="fab fa-edge"></i>
+                    <i class="fab fa-edge" aria-hidden="true"></i>
                     <span>Edge</span>
                 </div>
             </div>
@@ -49,23 +48,24 @@
         </div>
     </div>
 
-    <!-- 主内容 -->
-    <div class="background-animation" id="particles"></div>
-    <div class="container">
-        <div class="logo"><span>M</span></div>
-        <h1>即将跳转到我的网站</h1>
-        <div class="countdown" id="countdown">5</div>
-        <div class="message">
-            正在为您准备跳转页面
-            <span class="loading-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
-            <span class="target-url" id="targetUrl">https://my-website.com</span>
+    <!-- 主内容区 -->
+    <main class="main-content">
+        <div class="background-animation" id="particles" aria-hidden="true"></div>
+        <div class="container">
+            <h1>即将跳转到我的网站</h1>
+            <div class="countdown" id="countdown" role="timer" aria-live="polite">5</div>
+            <div class="message">
+                正在为您准备跳转页面
+                <span class="loading-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+                <span class="target-url" id="targetUrl">https://my-website.com</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="footer">安全跳转 · 请勿关闭此页面</div>
+            <div id="customFooter"></div>
         </div>
-        <div class="progress-container">
-            <div class="progress-bar"></div>
-        </div>
-        <div class="footer">安全跳转 · 请勿关闭此页面</div>
-        <div id="customFooter"></div>
-    </div>
+    </main>
 
     <script src="src/js/main.js" type="module"></script>
 </body>

@@ -24,9 +24,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         // 设置页面元素
         document.title = config.pageTitle;
-        document.querySelector('.logo span').textContent = config.logoText;
-        document.querySelector('.logo').style.background = config.logoColor;
-        
         // 应用页脚代码
         applyFooterCode(config.footerCode);
         
@@ -75,23 +72,38 @@ function applyTheme(theme) {
     const particlesCss = document.getElementById('particles-css');
     const overlayCss = document.getElementById('overlay-css');
     const responsiveCss = document.getElementById('responsive-css');
-    const businessCss = document.getElementById('business-css');
+    const themesCss = document.getElementById('themes-css');
     
-    // 根据主题切换样式
-    if (theme === 'business') {
-        // 启用商务风样式
-        if (baseCss) baseCss.disabled = true;
-        if (particlesCss) particlesCss.disabled = true;
-        if (overlayCss) overlayCss.disabled = true;
-        if (responsiveCss) responsiveCss.disabled = true;
-        if (businessCss) businessCss.disabled = false;
-    } else {
-        // 使用默认样式
-        if (baseCss) baseCss.disabled = false;
-        if (particlesCss) particlesCss.disabled = false;
-        if (overlayCss) overlayCss.disabled = false;
-        if (responsiveCss) responsiveCss.disabled = false;
-        if (businessCss) businessCss.disabled = true;
+    // 启用所有基础样式
+    if (baseCss) baseCss.disabled = false;
+    if (particlesCss) particlesCss.disabled = false;
+    if (overlayCss) overlayCss.disabled = false;
+    if (responsiveCss) responsiveCss.disabled = false;
+    if (themesCss) themesCss.disabled = false;
+    
+    // 移除所有可能的主题类
+    document.body.classList.remove('deepsea-theme', 'sunset-theme', 'forest-theme', 'violet-theme', 'sakura-theme');
+    
+    // 根据主题添加相应的类
+    switch (theme) {
+        case 'deepsea':
+            document.body.classList.add('deepsea-theme');
+            break;
+        case 'sunset':
+            document.body.classList.add('sunset-theme');
+            break;
+        case 'forest':
+            document.body.classList.add('forest-theme');
+            break;
+        case 'violet':
+            document.body.classList.add('violet-theme');
+            break;
+        case 'sakura':
+            document.body.classList.add('sakura-theme');
+            break;
+        default:
+            // 默认主题不添加额外的类
+            break;
     }
 }
 

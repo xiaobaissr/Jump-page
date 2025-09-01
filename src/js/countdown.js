@@ -153,32 +153,6 @@ async function showPopup() {
             box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
         }
         
-        /* 商务风样式 */
-        body.business-theme .popup-box {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-        }
-        
-        body.business-theme .popup-title {
-            color: #2c3e50;
-            text-shadow: none;
-        }
-        
-        body.business-theme .popup-message {
-            color: #7f8c8d;
-        }
-        
-        body.business-theme .popup-btn {
-            background: linear-gradient(135deg, #3498db, #2c3e50);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-        }
-        
-        body.business-theme .popup-btn:hover {
-            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.6);
-        }
-        
         /* 响应式设计 */
         @media (max-width: 480px) {
             .popup-box {

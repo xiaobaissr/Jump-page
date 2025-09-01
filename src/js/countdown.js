@@ -17,7 +17,6 @@ function startCountdown(targetUrl, duration, domainResults) {
             redirectToTarget(targetUrl, domainResults);
         }
     }, 1000);
-    setTimeout(() => redirectToTarget(targetUrl, domainResults), duration * 1000);
 }
 
 /**

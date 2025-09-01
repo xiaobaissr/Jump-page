@@ -93,6 +93,7 @@ _无需后端 ·静态页面· 开箱即用 · 炫酷特效_
 | `pageTitle`         | String | 浏览器标签页标题            | `"正在跳转..."`                                      |
 | `theme`             | String | 主题样式（default/business）| `"default"`                                          |
 | `footerCode`        | String | 自定义页脚代码              | `"<p>自定义页脚内容</p>"`                            |
+| `popup`             | Object | 无可用域名时的弹窗配置      | `{"title": "通知", "content": "内容", "buttonText": "确定", "buttonLink": "https://example.com"}` |
 
 ### 🔗 Hash 路径跳转
 
@@ -219,12 +220,46 @@ const particleSpeed = 2;
    ```
 
 ### 注意事项
-
+ 
 - 页脚代码会插入到页面底部，位于默认页脚信息之后
 - 如果`footerCode`为空或未设置，则不会显示任何额外内容
 - 您可以使用HTML、CSS和JavaScript代码来实现丰富的效果
 
 ---
+
+## 📝 弹窗功能定制
+
+当所有域名都无法访问时，系统会在倒计时结束后显示一个弹窗通知，而不是直接跳转。
+
+### 使用方法
+
+在`config.json`配置文件中添加`popup`字段，配置弹窗的标题、内容、按钮文本和按钮链接：
+
+```json
+{
+  "popup": {
+    "title": "重要通知",
+    "content": "当前所有域名均无法访问，请稍后再试。",
+    "buttonText": "确定",
+    "buttonLink": "https://example.com"
+  }
+}
+```
+
+### 配置说明
+
+| 参数        | 类型   | 说明               | 示例                          |
+| ----------- | ------ | ------------------ | ----------------------------- |
+| `title`     | String | 弹窗标题           | `"重要通知"`                  |
+| `content`   | String | 弹窗内容           | `"当前所有域名均无法访问..."` |
+| `buttonText`| String | 按钮文本           | `"确定"`                      |
+| `buttonLink`| String | 按钮链接（可选）   | `"https://example.com"`       |
+
+### 注意事项
+
+- 如果未配置`popup`字段，则会使用默认的弹窗内容
+- 如果配置了`buttonLink`，点击按钮会跳转到指定链接
+- 如果未配置`buttonLink`，点击按钮会关闭弹窗
 
 <div align="center">
 

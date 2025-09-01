@@ -29,7 +29,7 @@ _无需后端 ·静态页面· 开箱即用 · 炫酷特效_
 - **✨ 动态粒子背景**：Canvas 粒子飞舞，科技感爆棚
 - **🔮 玻璃拟态 UI**：半透明+模糊效果，潮流设计语言
 - **📱 响应式布局**：完美适配桌面、平板、手机
-- **🎭 多主题支持**：支持默认主题和商务风主题切换
+- **🎭 多主题支持**：支持5种全新配色方案切换
 - **🎨 自定义主题**：支持个性化颜色和样式定制
 
 ### 🛡️ 用户体验
@@ -88,10 +88,8 @@ _无需后端 ·静态页面· 开箱即用 · 炫酷特效_
 | ------------------- | ------ | --------------------------- | ---------------------------------------------------- |
 | `domains`           | Array  | 跳转域名列表（Base64 编码） | `["aHR0cHM6Ly9leGFtcGxlLmNvbQ=="]`                   |
 | `countdownDuration` | Number | 倒计时秒数                  | `5`                                                  |
-| `logoText`          | String | Logo 显示文字               | `"Jump-page"`                                        |
-| `logoColor`         | String | Logo 渐变颜色               | `"linear-gradient(45deg, #667eea 0%, #764ba2 100%)"` |
 | `pageTitle`         | String | 浏览器标签页标题            | `"正在跳转..."`                                      |
-| `theme`             | String | 主题样式（default/business）| `"default"`                                          |
+| `theme`             | String | 主题样式（deepsea/sunset/forest/violet/sakura）| `"deepsea"`                                          |
 | `footerCode`        | String | 自定义页脚代码              | `"<p>自定义页脚内容</p>"`                            |
 | `popup`             | Object | 无可用域名时的弹窗配置      | `{"title": "通知", "content": "内容", "buttonText": "确定", "buttonLink": "https://example.com"}` |
 
@@ -111,23 +109,59 @@ _无需后端 ·静态页面· 开箱即用 · 炫酷特效_
 ### 🎭 默认主题
 项目默认使用炫酷的科技风格主题，具有动态粒子背景和玻璃拟态UI效果。
 
-### 🏢 商务风主题
-新增商务风主题，采用专业蓝灰色调，适合企业级应用场景。
+### 🌊 深海蓝主题 (deepsea)
+采用深邃的蓝色渐变，营造出深海般的神秘感。
 
-要使用商务风主题，只需将配置文件中的`theme`值改为`business`：
+要使用深海蓝主题，只需将配置文件中的`theme`值改为`deepsea`：
 
 ```json
 {
-  "theme": "business"
+  "theme": "deepsea"
 }
 ```
 
-或者直接使用项目中提供的`config-business.json`示例文件：
+### 🌅 日落橙主题 (sunset)
+采用温暖的橙色和粉色渐变，营造出日落时分的浪漫氛围。
 
-```bash
-# 重命名文件以应用商务风样式
-mv config-business.json config.json
+要使用日落橙主题，只需将配置文件中的`theme`值改为`sunset`：
+
+```json
+{
+  "theme": "sunset"
+}
 ```
+
+### 🌲 森林绿主题 (forest)
+采用清新的绿色渐变，带来大自然的生机与活力。
+
+要使用森林绿主题，只需将配置文件中的`theme`值改为`forest`：
+
+```json
+{
+  "theme": "forest"
+}
+```
+
+### 🌸 紫罗兰主题 (violet)
+采用优雅的紫色渐变，营造出神秘而高贵的氛围。
+
+要使用紫罗兰主题，只需将配置文件中的`theme`值改为`violet`：
+
+```json
+{
+  "theme": "violet"
+}
+```
+
+### 🌸 樱花粉主题 (sakura)
+采用柔和的粉色渐变，营造出樱花盛开的浪漫氛围。
+
+要使用樱花粉主题，只需将配置文件中的`theme`值改为`sakura`：
+
+```json
+{
+  "theme": "sakura"
+}
 
 ### 🖌️ 自定义主题
 项目支持完全自定义主题样式，可以通过以下方式实现：
@@ -176,7 +210,7 @@ const particleSpeed = 2;
 - 🎯 **微信/QQ 用户**：自动显示引导页，建议使用外部浏览器
 - ⚙️ **配置修改**：所有设置都在 `config.json` 中，无需修改代码
 - 🔄 **备用域名**：建议配置多个备用域名，提高跳转成功率
-- 🎨 **主题切换**：通过修改`theme`配置项轻松切换不同主题样式
+- 🎨 **主题切换**：通过修改`theme`配置项轻松切换5种全新配色方案（deepsea/sunset/forest/violet/sakura）
 - 🎨 **样式定制**：可根据喜好调整颜色和样式
 - 📝 **页脚定制**：通过`footerCode`配置项添加自定义页脚内容
 

@@ -1,6 +1,8 @@
 // src/js/domain-speed.js
 // 域名测速功能
 
+import { startCountdown } from './countdown.js';
+
 /**
  * 解密base64域名
  * @param {Array<string>} domains - Base64编码的域名数组
@@ -55,5 +57,42 @@ function selectFastestDomain(results) {
     return results[0].domain;
 }
 
+/**
+ * 测试域名并启动倒计时
+ * @param {Array} domains - 域名列表
+ * @param {string} targetPath - 目标路径
+ * @param {number} countdown - 倒计时秒数
+ * @returns {Promise<Array>} 域名测速结果数组
+ */
+async function testDomains(domains, targetPath, countdown) {
+    // 测试域名速度
+    const results = await testDomainSpeed(domains);
+    console.log('域名测速结果:', results);
+    
+    // 选择最快的域名
+    const fastest = selectFastestDomain(results);
+    console.log('最快的域名:', fastest);
+    
+    // 构造目标URL
+    let targetUrl = fastest;
+    
+    // 如果有目标路径，添加到目标URL
+    if (targetPath) {
+        // 确保目标URL以斜杠结尾
+        if (!targetUrl.endsWith('/')) {
+            targetUrl += '/';
+        }
+        // 移除目标路径开头的斜杠（如果有）
+        const cleanPath = targetPath.startsWith('/') ? targetPath.substring(1) : targetPath;
+        targetUrl += cleanPath;
+    }
+    
+    // 启动倒计时，传递域名测速结果
+    startCountdown(targetUrl, countdown, results);
+    
+    // 返回测速结果
+    return results;
+}
+
 // 导出函数
-export { decodeDomains, testDomainSpeed, selectFastestDomain };
+export { decodeDomains, testDomainSpeed, selectFastestDomain, testDomains };

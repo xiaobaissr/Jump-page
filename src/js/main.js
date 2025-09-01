@@ -4,7 +4,7 @@
 // 导入所有功能模块
 import { fetchConfig } from './config.js';
 import { isWeixinOrQQBrowser } from './browser-detect.js';
-import { decodeDomains, testDomainSpeed, selectFastestDomain } from './domain-speed.js';
+import { decodeDomains, testDomainSpeed, selectFastestDomain, testDomains } from './domain-speed.js';
 import { startCountdown, redirectToTarget } from './countdown.js';
 import { createParticles } from './particles.js';
 import { setupCopyUrlButton } from './clipboard.js';
@@ -52,32 +52,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         // 更新目标URL显示
         updateTargetUrl("测速中...");
         
-        // 测试域名速度并选择最快的
+        // 测试域名并启动倒计时
         console.log('开始域名测速...');
-        const results = await testDomainSpeed(domains);
-        console.log('域名测速结果:', results);
-        const fastest = selectFastestDomain(results);
-        console.log('最快的域名:', fastest);
-        
-        // 获取hash路径
         const hashPath = window.location.hash.substring(1);
-        let targetUrl = fastest;
-        
-        // 如果有hash路径，添加到目标URL
-        if (hashPath) {
-            // 确保目标URL以斜杠结尾
-            if (!targetUrl.endsWith('/')) {
-                targetUrl += '/';
-            }
-            // 移除hash路径开头的斜杠（如果有）
-            const cleanHash = hashPath.startsWith('/') ? hashPath.substring(1) : hashPath;
-            targetUrl += cleanHash;
-        }
-        
-        updateTargetUrl(targetUrl);
-        
-        // 开始倒计时
-        startCountdown(targetUrl, config.countdownDuration);
+        await testDomains(domains, hashPath, config.countdownDuration);
     } catch (error) {
         console.error('主程序执行出错:', error);
         // 显示错误信息给用户

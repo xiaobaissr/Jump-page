@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹窗页面</title>
+    <link rel="stylesheet" href="src/css/popup.css">
+    <link rel="stylesheet" href="src/css/particles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 背景粒子效果 -->
+    <div class="background-animation" id="particles"></div>
+    
+    <!-- 弹窗容器 -->
+    <div class="popup-container">
+        <div class="popup-box">
+            <div class="popup-header">
+                <h2 class="popup-title">重要通知</h2>
+            </div>
+            <div class="popup-content">
+                <p class="popup-message">这是一个弹窗通知内容。</p>
+            </div>
+            <div class="popup-footer">
+                <button class="popup-btn" id="popupButton">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="src/js/popup.js" type="module"></script>
+</body>
+</html>

@@ -1,13 +1,19 @@
 {
     "domains": [
-        "aHR0cHM6Ly9kdWppYW8udXV1aXguY29tCg==",
-        "aHR0cHM6Ly9iYWlkdS5jb20=",
-        "aHR0cHM6Ly8xLjEuMS4x"
+        "aHR0cHM6Ly94Ym9hcmQud3VmZW5nLm1l",
+        "aHR0cHM6Ly94Ym9hcmQud3VmZW5nLm1l",
+        "aHR0cHM6Ly94Ym9hcmQud3VmZW5nLm1l"
     ],
     "countdownDuration": 5,
     "logoText": "WF",
     "logoColor": "linear-gradient(135deg, #3498db 0%, #2c3e50 100%)",
     "pageTitle": "跳转到我的网站",
     "theme": "business",
-    "footerCode": "<p style='text-align: center; margin-top: 20px; color: #666;'>© 2023 My Website. All rights reserved.</p>"
+    "footerCode": "<p style='text-align: center; margin-top: 20px; color: #666;'>© 2023 My Website. All rights reserved.</p>",
+    "popup": {
+        "title": "重要通知",
+        "content": "这是一个弹窗通知内容。",
+        "buttonText": "确定",
+        "buttonLink": "https://example.com"
+    }
 }

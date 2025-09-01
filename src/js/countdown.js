@@ -10,6 +10,13 @@
 function startCountdown(targetUrl, duration, domainResults) {
     let c = duration, el = document.getElementById('countdown');
     el.textContent = c;
+    
+    // 动态设置进度条动画时间
+    const progressBar = document.querySelector('.progress-bar');
+    if (progressBar) {
+        progressBar.style.animation = `progress ${duration}s linear forwards`;
+    }
+    
     const timer = setInterval(() => {
         el.textContent = --c;
         if (c <= 0) {

@@ -21,22 +21,39 @@ function decodeDomains(domains) {
 function testDomainSpeed(domains, timeout = 2000) {
     return Promise.all(domains.map(domain => {
         return new Promise(resolve => {
-            const img = new Image();
+            // 尝试使用fetch API作为主要测速方法
             const start = performance.now();
             let finished = false;
-            img.onload = () => {
+            
+            fetch(domain + '/?ping=' + Date.now(), {
+                method: 'HEAD',
+                mode: 'no-cors',
+                cache: 'no-store'
+            })
+            .then(() => {
                 if (!finished) {
                     finished = true;
                     resolve({domain, time: performance.now() - start});
                 }
-            };
-            img.onerror = () => {
-                if (!finished) {
-                    finished = true;
-                    resolve({domain, time: Infinity});
-                }
-            };
-            img.src = domain + "/favicon.ico?_t=" + Math.random();
+            })
+            .catch(() => {
+                // 如果fetch失败，回退到图片测速方法
+                const img = new Image();
+                img.onload = () => {
+                    if (!finished) {
+                        finished = true;
+                        resolve({domain, time: performance.now() - start});
+                    }
+                };
+                img.onerror = () => {
+                    if (!finished) {
+                        finished = true;
+                        resolve({domain, time: Infinity});
+                    }
+                };
+                img.src = domain + "/favicon.ico?_t=" + Math.random();
+            });
+            
             setTimeout(() => {
                 if (!finished) {
                     finished = true;

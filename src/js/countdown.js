@@ -1,6 +1,13 @@
 // src/js/countdown.js
 // 倒计时功能
 
+// 状态管理
+let countdownState = {
+    timer: null,
+    targetUrl: '',
+    domainResults: []
+};
+
 /**
  * 开始倒计时
  * @param {string} targetUrl - 目标URL
@@ -8,7 +15,11 @@
  * @param {Array} domainResults - 域名测速结果
  */
 function startCountdown(targetUrl, duration, domainResults) {
-    let c = duration, el = document.getElementById('countdown');
+    countdownState.targetUrl = targetUrl;
+    countdownState.domainResults = domainResults;
+    
+    let c = duration;
+    const el = document.getElementById('countdown');
     el.textContent = c;
     
     // 动态设置进度条动画时间
@@ -17,10 +28,10 @@ function startCountdown(targetUrl, duration, domainResults) {
         progressBar.style.animation = `progress ${duration}s linear forwards`;
     }
     
-    const timer = setInterval(() => {
+    countdownState.timer = setInterval(() => {
         el.textContent = --c;
         if (c <= 0) {
-            clearInterval(timer);
+            clearInterval(countdownState.timer);
             redirectToTarget(targetUrl, domainResults);
         }
     }, 1000);
@@ -32,16 +43,49 @@ function startCountdown(targetUrl, duration, domainResults) {
  * @param {Array} domainResults - 域名测速结果
  */
 async function redirectToTarget(url, domainResults) {
-    // 检查是否有可用域名（响应时间不是Infinity的域名）
-    if (domainResults) {
-        const availableDomains = domainResults.filter(result => result.time !== Infinity);
+    if (countdownState.cancelled) return;
+    
+    // 检查是否有可用域名
+    if (domainResults && domainResults.length > 0) {
+        console.log('原始域名结果:', domainResults);
+        
+        const availableDomains = domainResults.filter(result => {
+            if (!result) return false;
+            
+            console.log('检查域名结果:', result);
+            
+            // 严格检查time字段
+            if (typeof result.time === 'number') {
+                if (result.time === Infinity) {
+                    console.log('域名不可用:', result.domain);
+                    return false;
+                }
+                if (result.time > 0) {
+                    console.log('有效域名:', result.domain, '响应时间:', result.time);
+                    return true;
+                }
+            }
+            
+            console.log('无效域名结果:', result);
+            return false;
+        });
+        
+        console.log('可用域名:', availableDomains);
+        
         if (availableDomains.length === 0) {
-            // 没有可用域名，在页面内显示弹窗
-            console.log('没有可用域名，在页面内显示弹窗');
+            console.warn('没有检测到可用域名');
             showPopup();
             return;
         }
+        
+        // 如果有可用域名则直接跳转
+        console.log('使用域名跳转:', url);
+        window.location.href = url;
+        return;
     }
+    
+    // 没有域名检测结果时也直接跳转
+    console.log('无域名检测结果，直接跳转');
     
     // 有可用域名，正常跳转
     window.location.href = url;

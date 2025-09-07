@@ -7,11 +7,11 @@
     "countdownDuration": 5,
     "pageTitle": "跳转到我的网站",
     "theme": "forest",
-    "footerCode": "<p style='text-align: center; margin-top: 20px; color: #666;'>© 2023 My Website. All rights reserved.</p>",
+    "footerCode": "<p style='text-align: center; margin-top: 20px; color: #666;'>© 2025 NIUNIU 加速器.</p>",
     "popup": {
         "title": "重要通知",
-        "content": "您无法访问，网站请联系网站管理人员<p>联系方式：xxxx",
+        "content": "跳转中，请点击确定",
         "buttonText": "确定",
-        "buttonLink": "#"
+        "buttonLink": "https://aa.maoniu.love"
     }
 }

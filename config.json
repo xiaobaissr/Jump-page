@@ -1,8 +1,8 @@
 {
     "domains": [
-        "aHR0cHM6Ly94Ym9hcmQud3VmZW5nLm1l",
-        "aHR0cHM6Ly94Ym9hcmQud3VmZW5nLm1l",
-        "aHR0cHM6Ly94Ym9hcmQud3VmZW5nLm1l"
+        "aHR0cHM6Ly9hYS5tYW9uaXUubG92ZQ==",
+        "aHR0cHM6Ly9hYS5tYW9uaXUucHJv",
+        "aHR0cHM6Ly9hYS5tYW9uaXUwMS50b3A="
     ],
     "countdownDuration": 5,
     "pageTitle": "跳转到我的网站",
